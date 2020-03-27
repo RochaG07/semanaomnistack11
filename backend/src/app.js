@@ -7,13 +7,15 @@ const routes = require('./routes');
 //Importa os cors, utilizado para determinar quem poderá acessar a aplicação
 const cors = require('cors');
 
+const { errors } = require('celebrate');
+
 //Variavel utilizada para armazenar a aplicação
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-
+app.use(errors());
 /*
     Rota / Recurso
 
@@ -30,4 +32,4 @@ app.use(routes);
 */
 //'/' -> Rota raiz do node
 
-app.listen(3333);
+module.exports = app;

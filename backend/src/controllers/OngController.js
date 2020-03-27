@@ -1,5 +1,5 @@
 const connection = require('../database/connection');
-const crypto = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 
 module.exports={
     async index(request, response){
@@ -14,7 +14,7 @@ module.exports={
         const { name, email, whatsapp, city, uf} = request.body;
 
         //Gera 4 bytes de caracteres aleatorios e converte em uma string de tipo hexadecimal
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
 
         //Função assincrona: Quando o node cheagr nesse código, ele vai aguardar
         //a realização do código abaixo para então continuar
